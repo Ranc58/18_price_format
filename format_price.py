@@ -4,12 +4,11 @@ import locale
 
 def format_price(input_price):
     locale.setlocale(locale.LC_ALL, '')
+    numbers_after_comma = 2
     try:
-        if isinstance(input_price, (int, float)):
-            output_price = ("{:n}".format(round(input_price,2)))
-        else:
+        if isinstance(input_price, str):
             input_price = float(input_price.replace(',', '.'))
-            output_price = "{:n}".format(round(input_price,2))
+        output_price = "{:n}".format(round(input_price, numbers_after_comma))
     except ValueError:
         return None
     else:
